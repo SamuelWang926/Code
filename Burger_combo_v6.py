@@ -4,7 +4,7 @@ Created by Qingxiao
 """
 # pylint: disable = W0621, W0612, C0103, C0206
 
-import easygui
+import easygui # Import GUI library
 
 combos = {
          "Value": {
@@ -89,7 +89,7 @@ def add_combo():
 def find_combo():
     """Find combo meal based on user input"""
     search_term_input = easygui.enterbox(
-        "Enter combo name to search:", "Find Combo").strip().title()
+        "Enter combo name to search:", "Find Combo").strip().title() # Find combo based on input
     if search_term_input is None:
         return
     search_term = search_term_input.strip().title()
@@ -97,7 +97,7 @@ def find_combo():
     found = [combo for combo in combos.values()
              if combo["Combo name"].lower() == search_term.lower()]
 
-    if not found:
+    if not found: # Error message if no combo found
         easygui.msgbox(f"No combo found with name: {search_term}", "Search Result")
         return
 
@@ -127,7 +127,7 @@ def delete_combo():
     if not selected:
         return
 
-    target = combos[selected]
+    target = combos[selected] # Save combo for deletion
     items = "\n".join(
         [f"• {item['Item']} (${item['Price']:.2f})"
          for item in target["Combo items"]])
@@ -138,8 +138,8 @@ def delete_combo():
         f"Combo Name: {selected}\n"
         f"Items:\n{items}\n"
         f"Total Price: ${total:.2f}"
-    )
-
+    ) # Output the target combo for confirmation
+    # Ask for confirmation before deletion
     if easygui.buttonbox(confirm_msg, choices=["Confirm Delete", "Cancel"]) == "Confirm Delete":
         del combos[selected]
         easygui.msgbox(f"Combo '{selected}' deleted successfully", "Deletion Complete")
@@ -158,8 +158,8 @@ def output_all():
         details = combos[name]
         items = "\n".join(
             [f"• {item['Item']} (${item['Price']:.2f})"
-             for item in details["Combo items"]])
-        total = sum(item["Price"] for item in details["Combo items"])
+             for item in details["Combo items"]])# Create a string of items
+        total = sum(item["Price"] for item in details["Combo items"])# Calculate total price
         display.append(
             f"Combo Name: {name}\n"
             f"Items:\n{items}\n"

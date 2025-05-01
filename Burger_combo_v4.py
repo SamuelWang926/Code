@@ -41,6 +41,7 @@ all_items = {
 }
 
 def add_combo(all_items):
+    """Add a new combo meal to the dictionary"""
     # Show all available items
     for i, (item_name, price) in enumerate(all_items.items(), 1):
         print(f"{i}. {item_name} (${price:.2f})")
@@ -70,7 +71,7 @@ def add_combo(all_items):
         "Combo name": combo_name,
         "Combo items": selected_items
     }
-    print(f"\n✅New Combo {combo_name} created successfully. Details:")
+    print(f"\nNew Combo {combo_name} created successfully. Details:")
     print(f"[{combo_name}]The combo contains:")
     total = 0.0
     for item in selected_items:
@@ -145,4 +146,4 @@ while choice != "5":
     elif choice == "5":
         print("Goodbye!")
     else:
-        print("Invalid choice, please try again.")
+        print("\nYou cannot leave this blank or enter an invalid choices. Please try again.")

@@ -87,4 +87,4 @@ while choice != "5":
     elif choice == "5":
         print("Goodbye!")
     else:
-        print("Invalid choice, please try again.")
+        print("\nYou cannot leave this blank or enter invalid choices. Please try again.")
